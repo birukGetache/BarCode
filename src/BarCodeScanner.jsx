@@ -1,33 +1,28 @@
-// src/BarcodeScanner.jsx
-
 import React, { useState } from 'react';
-import { QrReader } from 'react-qr-reader'; // Use named import instead of default
+import {QrReader} from 'react-qr-reader';
 
-const BarcodeScanner = () => {
-  const [data, setData] = useState('No data');
+const Test = () => {
+  const [result, setResult] = useState('No result');
 
-  const handleScan = (scannedData) => {
-    if (scannedData) {
-      setData(scannedData);
-    }
-  };
+  const handleScan = (data) => {
+    setResult(data);
+  }
 
-  const handleError = (error) => {
-    console.error(error);
-  };
+  const handleError = (err) => {
+    console.error(err);
+  }
 
   return (
-    <div>
-      <h1>Barcode Scanner</h1>
+    <div style={{width:"90vw", }}>
       <QrReader
         delay={300}
         onError={handleError}
         onScan={handleScan}
-        style={{ width: '100%', maxWidth: '600px', margin: 'auto' }}
+        style={{ width: '100%' }}
       />
-      <p>Scanned Data: {data}</p>
+      <p>Scanned Data</p>
+      <p>{result}</p>
     </div>
   );
-};
-
-export default BarcodeScanner;
+}
+export default Test;
